@@ -1,0 +1,4 @@
+.idea
+target/
+bookstore.iml
+bookstore-grailsPlugins.iml
