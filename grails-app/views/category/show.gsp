@@ -1,5 +1,5 @@
 
-<%@ page import="com.dodyrw.bookstore.com.dodyrw.bookstore.Category" %>
+<%@ page import="com.dodyrw.bookstore.Category" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,6 +22,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list category">
+			
 			
 				<g:if test="${categoryInstance?.name}">
 				<li class="fieldcontain">

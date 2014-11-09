@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${bookInstance?.category}">
+				<li class="fieldcontain">
+					<span id="category-label" class="property-label"><g:message code="book.category.label" default="Category" /></span>
+					
+						<span class="property-value" aria-labelledby="category-label"><g:link controller="category" action="show" id="${bookInstance?.category?.id}">${bookInstance?.category.name?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${bookInstance?.publisher}">
 				<li class="fieldcontain">
 					<span id="publisher-label" class="property-label"><g:message code="book.publisher.label" default="Publisher" /></span>

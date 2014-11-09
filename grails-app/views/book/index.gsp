@@ -26,6 +26,8 @@
 					
 						<g:sortableColumn property="author" title="${message(code: 'book.author.label', default: 'Author')}" />
 					
+						<th><g:message code="book.category.label" default="Category" /></th>
+					
 						<g:sortableColumn property="publisher" title="${message(code: 'book.publisher.label', default: 'Publisher')}" />
 					
 						<g:sortableColumn property="title" title="${message(code: 'book.title.label', default: 'Title')}" />
@@ -37,6 +39,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${bookInstance.id}">${fieldValue(bean: bookInstance, field: "author")}</g:link></td>
+					
+						<td>${fieldValue(bean: bookInstance, field: "category.name")}</td>
 					
 						<td>${fieldValue(bean: bookInstance, field: "publisher")}</td>
 					

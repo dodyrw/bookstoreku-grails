@@ -5,6 +5,8 @@ class Book {
     String author
     String publisher
 
+    static belongsTo = [category:Category]
+
     static constraints = {
     }
 }

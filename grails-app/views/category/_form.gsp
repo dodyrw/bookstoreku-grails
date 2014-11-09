@@ -1,6 +1,4 @@
-<%@ page import="com.dodyrw.bookstore.com.dodyrw.bookstore.Category" %>
-
-
+<%@ page import="com.dodyrw.bookstore.Category" %>
 
 <div class="fieldcontain ${hasErrors(bean: categoryInstance, field: 'name', 'error')} required">
 	<label for="name">

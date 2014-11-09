@@ -1,5 +1,5 @@
 
-<%@ page import="com.dodyrw.bookstore.com.dodyrw.bookstore.Category" %>
+<%@ page import="com.dodyrw.bookstore.Category" %>
 <!DOCTYPE html>
 <html>
 	<head>

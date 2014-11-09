@@ -5,9 +5,9 @@ package com.dodyrw.bookstore
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(BookController)
-@Mock(Book)
-class BookControllerSpec extends Specification {
+@TestFor(CategoryController)
+@Mock(Category)
+class CategoryControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class BookControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.bookInstanceList
-            model.bookInstanceCount == 0
+            !model.categoryInstanceList
+            model.categoryInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class BookControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.bookInstance!= null
+            model.categoryInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class BookControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def book = new Book()
-            book.validate()
-            controller.save(book)
+            def category = new Category()
+            category.validate()
+            controller.save(category)
 
         then:"The create view is rendered again with the correct model"
-            model.bookInstance!= null
+            model.categoryInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            book = new Book(params)
+            category = new Category(params)
 
-            controller.save(book)
+            controller.save(category)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/book/show/1'
+            response.redirectedUrl == '/category/show/1'
             controller.flash.message != null
-            Book.count() == 1
+            Category.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class BookControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def book = new Book(params)
-            controller.show(book)
+            def category = new Category(params)
+            controller.show(category)
 
         then:"A model is populated containing the domain instance"
-            model.bookInstance == book
+            model.categoryInstance == category
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class BookControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def book = new Book(params)
-            controller.edit(book)
+            def category = new Category(params)
+            controller.edit(category)
 
         then:"A model is populated containing the domain instance"
-            model.bookInstance == book
+            model.categoryInstance == category
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class BookControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/book/index'
+            response.redirectedUrl == '/category/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def book = new Book()
-            book.validate()
-            controller.update(book)
+            def category = new Category()
+            category.validate()
+            controller.update(category)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.bookInstance == book
+            model.categoryInstance == category
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            book = new Book(params).save(flush: true)
-            controller.update(book)
+            category = new Category(params).save(flush: true)
+            controller.update(category)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/book/show/$book.id"
+            response.redirectedUrl == "/category/show/$category.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class BookControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/book/index'
+            response.redirectedUrl == '/category/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def book = new Book(params).save(flush: true)
+            def category = new Category(params).save(flush: true)
 
         then:"It exists"
-            Book.count() == 1
+            Category.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(book)
+            controller.delete(category)
 
         then:"The instance is deleted"
-            Book.count() == 0
-            response.redirectedUrl == '/book/index'
+            Category.count() == 0
+            response.redirectedUrl == '/category/index'
             flash.message != null
     }
 }
