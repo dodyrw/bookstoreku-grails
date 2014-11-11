@@ -1,11 +1,11 @@
 <%@ page import="com.dodyrw.bookstore.Category" %>
 
-<div class="fieldcontain ${hasErrors(bean: categoryInstance, field: 'name', 'error')} required">
-	<label for="name">
+<div class="form-group ${hasErrors(bean: categoryInstance, field: 'name', 'error')} required">
+	<label for="name" class="col-md-2 control-label">
 		<g:message code="category.name.label" default="Name" />
-		<span class="required-indicator">*</span>
+		<span>*</span>
 	</label>
-	<g:textField name="name" required="" value="${categoryInstance?.name}"/>
-
+	<div class="col-md-4">
+		<g:textField name="name" class="form-control" required="" value="${categoryInstance?.name}"/>
+	</div>
 </div>
-
